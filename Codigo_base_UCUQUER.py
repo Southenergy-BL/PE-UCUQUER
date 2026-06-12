@@ -4,6 +4,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import re
+import os
 
 # ==========================================
 # 1. CONFIGURACIÓN Y CONSTANTES
@@ -94,8 +95,8 @@ def calcular_rampas(df_agrupado):
 # ==========================================
 st.title("🌬️ Monitoreo de Activos: Complejo Ucuquer")
 
-RUTA_GEN = r"C:\Users\bryan\Documents\GitHub\PE-UCUQUER\Generación 2025-May 2026.xlsx"
-RUTA_CMG = r"C:\Users\bryan\Documents\GitHub\PE-UCUQUER\CMg_Multibarra_Con_Promedios.xlsx"
+RUTA_GEN = os.path.join("datos", "Descarga_Generación_Real_2026-05.xlsx")
+RUTA_CMG = os.path.join("datos", "CMg_Multibarra_Solo_Promedios.xlsx")
 
 try:
     df_completo = cargar_y_procesar_datos(RUTA_GEN)
