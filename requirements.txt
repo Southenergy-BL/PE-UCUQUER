@@ -1,0 +1,13 @@
+streamlit
+pandas
+altair
+plotly
+networkx
+openpyxl
+groq
+beautifulsoup4
+selenium
+requests
+pdfplumber
+webdriver-manager
+python-docx
