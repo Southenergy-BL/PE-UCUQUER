@@ -253,7 +253,7 @@ try:
             st.info(f"🌿 **{formato_cl(emisiones_evitadas)} toneladas** de CO2 desplazadas del Sistema Eléctrico Nacional.")
             st.success(f"🏠 Energía suficiente para abastecer **{formato_cl(hogares_equivalentes)} hogares**.")
             
-            fig_fc = px.bar(df_kpi, x='Central', y='Factor_Capacidad_%', color='Central', color_discrete_map=COLORES_CENTRALES, text_auto='.2f', title="Factor de Capacidad (%)")
+            fig_fc = px.bar(df_kpi, x='Central', y='Factor_Capacidad_%', color='Central', color_discrete_map=COLORES_CENTRALES, text_auto='.2f', title="Factor de Planta (%)")
             st.plotly_chart(fig_fc, use_container_width=True, config=CONFIG_PLOTLY)
 
     # ---------------------------------------------------------
