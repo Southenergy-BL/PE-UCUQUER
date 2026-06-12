@@ -238,7 +238,7 @@ try:
         k1, k2, k3 = st.columns(3)
         k1.metric("Generación Total Consolidada", f"{formato_cl(gen_total_global)} MWh")
         k2.metric("Hora Peak Estadística", f"{hora_peak}:00 hrs")
-        k3.metric("Potencia Rodante Instalada", f"{formato_cl(sum(POTENCIA_INSTALADA.values()))} MW")
+        k3.metric("Potencia Total Instalada", f"{formato_cl(sum(POTENCIA_INSTALADA.values()))} MW")
         
         st.divider()
         
@@ -304,7 +304,7 @@ Hogares Equivalentes Abastecidos: {formato_cl(hogares_equivalentes)}
     for _, row in df_kpi.iterrows():
         reporte_txt += f"""{row['Central']}:
   - Producción: {formato_cl(row['Generacion_Total'])} MWh
-  - Factor de Capacidad: {formato_cl(row['Factor_Capacidad_%'])} %
+  - Factor de Planta: {formato_cl(row['Factor_Capacidad_%'])} %
   - Horas Equivalentes a Plena Carga (HEPC): {formato_cl(row['HEPC'])} horas
   - Máxima Inyección Horaria: {formato_cl(row['Max_Generacion'])} MW\n"""
 
