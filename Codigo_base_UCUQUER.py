@@ -9,7 +9,7 @@ import os
 # ==========================================
 # 1. CONFIGURACIÓN Y CONSTANTES
 # ==========================================
-st.set_page_config(page_title="Monitoreo de Portafolio de Activos: UCUQUER", layout="wide")
+st.set_page_config(page_title="Monitoreo de Portafolio de Activos: PE UCUQUER", layout="wide")
 
 COLORES_CENTRALES = {
     'PMGD PE UCUQUER': '#8ECAE6',
