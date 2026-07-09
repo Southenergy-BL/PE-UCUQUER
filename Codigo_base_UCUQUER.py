@@ -88,7 +88,7 @@ def calcular_rampas(df_agrupado):
 # ==========================================
 # 3. INTERFAZ Y PESTAÑAS
 # ==========================================
-st.title("Monitoreo de Portafolio de Activos Renovables")
+st.title("Monitoreo de Portafolio de Activos Renovables: UCUQUER")
 
 RUTA_GEN = os.path.join("datos", "Generación 2025-Jun 2026.xlsx")
 RUTA_CMG = os.path.join("datos", "CMg_Multibarra_Con_Promedios.xlsx")
