@@ -105,20 +105,45 @@ try:
     except Exception as e:
         st.sidebar.warning(f"Costos Marginales no cargados: {e}")
 
-    # --- FILTRO MULTICENTRAL EN SIDEBAR ---
+    # --- FILTROS EN SIDEBAR ---
     st.sidebar.markdown("### ⚙️ Filtros de Portafolio")
+    
+    # 1. Definir límites para el calendario según los datos cargados
+    fecha_min = df_base['Fecha'].min().date()
+    fecha_max = df_base['Fecha'].max().date()
+
+    # 2. Widget de rango de fechas
+    rango_fechas = st.sidebar.date_input(
+        "Seleccionar Rango de Fechas:",
+        value=(fecha_min, fecha_max),
+        min_value=fecha_min,
+        max_value=fecha_max
+    )
+
+    # 3. Widget de selección de activos
     centrales_seleccionadas = st.sidebar.multiselect(
         "Seleccionar Activos:",
         options=list(POTENCIA_INSTALADA.keys()),
         default=list(POTENCIA_INSTALADA.keys())
     )
 
+    # 4. Validaciones
+    if len(rango_fechas) != 2:
+        st.warning("⏳ Por favor, selecciona una fecha de inicio y una fecha de fin en el calendario.")
+        st.stop()
+        
     if not centrales_seleccionadas:
-        st.warning("Por favor, selecciona al menos una central en el menú lateral.")
+        st.warning("⚠️ Por favor, selecciona al menos una central en el menú lateral.")
         st.stop()
 
-    # Filtramos el dataframe según la selección del usuario
-    df_completo = df_base[df_base['Central'].isin(centrales_seleccionadas)].copy()
+    fecha_inicio, fecha_fin = rango_fechas
+
+    # 5. Filtrar el dataframe según selección de usuario y rango de fechas
+    df_completo = df_base[
+        (df_base['Central'].isin(centrales_seleccionadas)) &
+        (df_base['Fecha'].dt.date >= fecha_inicio) &
+        (df_base['Fecha'].dt.date <= fecha_fin)
+    ].copy()
     dias_periodo = len(df_completo['Fecha'].unique())
     
     tab_op, tab_econ, tab_kpi, tab_heat = st.tabs([
